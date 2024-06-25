@@ -1,6 +1,6 @@
-package src.controllers.dao;
+package src.services.dao;
 
-import src.controllers.Transaction;
+import src.services.Transaction;
 
 import java.util.List;
 

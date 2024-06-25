@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.views.BooksController">
+   <children>
+      <TableView fx:id="table" layoutX="92.0" layoutY="93.0" prefHeight="267.0" prefWidth="437.0">
+         <columns>
+            <TableColumn fx:id="title" prefWidth="75.0" text="Title" />
+            <TableColumn fx:id="author" prefWidth="75.0" text="Author" />
+            <TableColumn fx:id="publisher" prefWidth="75.0" text="Publisher" />
+            <TableColumn fx:id="copies" prefWidth="75.0" text="Copies" />
+         </columns>
+      </TableView>
+      <Label layoutX="287.0" layoutY="34.0" text="Books">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

@@ -1,7 +1,7 @@
-package src.controllers.dao;
+package src.services.dao;
 
-import src.controllers.Book;
-import src.controllers.utils.DBUtil;
+import src.services.Book;
+import src.services.utils.DBUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -68,8 +68,8 @@ public class BookDaoService implements BookDao{
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 Book book = new Book();
-                book.setISBN(rs.getLong("ISBN"));
-                book.setTitle(rs.getString("name"));
+                book.setISBN(rs.getLong("isbn"));
+                book.setTitle(rs.getString("title"));
                 book.setAuthor(rs.getString("author"));
                 book.setAvailableCopies(rs.getInt("available_copies"));
                 book.setPublisher(rs.getString("publisher"));

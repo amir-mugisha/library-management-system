@@ -3,5 +3,7 @@ module library.management.system.src {
     requires javafx.controls;
     requires java.sql;
 
+
     exports src.views;
+    exports src.services;
 }

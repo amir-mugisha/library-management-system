@@ -1,6 +1,6 @@
-package src.controllers;
+package src.services;
 
-import src.controllers.dao.BookDaoService;
+import src.services.dao.BookDaoService;
 
 import java.util.Scanner;
 

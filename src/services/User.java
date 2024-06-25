@@ -1,19 +1,25 @@
-package src.controllers;
+package src.services;
 
 import java.time.LocalDate;
 
 public class User {
     private int id;
     private String name;
+    private String email;
     private String role;
+    private String password;
     private String phoneNumber;
     private String isActive;
     LocalDate created_at;
     LocalDate updated_at;
 
-    public User(int id, String name, String role, String phoneNumber, String isActive) {
+    public User() {
+    }
+
+    public User(int id, String name, String email, String role, String phoneNumber, String isActive) {
         this.id = id;
         this.name = name;
+        this.email = email;
         this.role = role;
         this.phoneNumber = phoneNumber;
         this.isActive = isActive;
@@ -39,6 +45,22 @@ public class User {
 
     public String getRole() {
         return role;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setRole(String role) {
@@ -76,4 +98,5 @@ public class User {
     public void setUpdated_at(LocalDate updated_at) {
         this.updated_at = updated_at;
     }
+
 }
