@@ -60,6 +60,17 @@ public void viewBooks(ActionEvent event){
         }
     }
 
+    public void addUser(ActionEvent event){
+        try{
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("addUser.fxml")));
+            content.getChildren().removeAll();
+            content.getChildren().setAll(root);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
     public void login(ActionEvent event){

@@ -19,7 +19,20 @@ public class UserDaoService implements UserDao{
 
     @Override
     public void addUser(User user) {
+        try {
+            String sql = "INSERT INTO users (name, email, role, password, phoneNumber, isActive) VALUES (?, ?, ?, ?, ?, ?);";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, user.getName());
+            ps.setString(2, user.getEmail());
+            ps.setString(3,user.getRole());
+            ps.setString(4,user.getPassword());
+            ps.setString(5,user.getPhoneNumber());
+            ps.setString(6, user.getIsActive());
+            ps.executeUpdate();
 
+        }catch (Exception e){
+            throw new RuntimeException("Failed to add book " + e.getMessage());
+        }
     }
 
     @Override

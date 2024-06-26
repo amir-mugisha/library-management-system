@@ -46,7 +46,17 @@
                                     <Font size="16.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="210.0" style="-fx-background-color: #263;" text="Add user" textFill="WHITE">
+                              <Button mnemonicParsing="false" onAction="#addUser" prefHeight="39.0" prefWidth="210.0" style="-fx-background-color: #263;" text="Add user" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#addUser" prefHeight="39.0" prefWidth="210.0" style="-fx-background-color: #263;" text="Transactions" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#addUser" prefHeight="39.0" prefWidth="210.0" style="-fx-background-color: #263;" text="Add transaction" textFill="WHITE">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
