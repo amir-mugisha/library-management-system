@@ -41,12 +41,13 @@ public class UserDaoService implements UserDao{
     }
 
     @Override
-    public int checkUserExistence(String email) {
+    public int checkUserExistence(String email, String password) {
         int count = 0;
         try{
-            String sql = "SELECT COUNT(1) FROM users WHERE email = ?";
+            String sql = "SELECT COUNT(1) FROM users WHERE email = ? AND password=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, email);
+            ps.setString(2,password);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 count =  rs.getInt(1);

@@ -5,16 +5,19 @@ import java.time.LocalDate;
 public class Transaction {
     private int id;
     private int book_id;
-    private int patron_id;
+    private int user_id;
     private String status;
     private LocalDate dueDate;
     private LocalDate created_at;
     private LocalDate updated_at;
 
+    public Transaction() {
+    }
+
     public Transaction(int id, int book_id, int patron_id, String status, LocalDate dueDate) {
         this.id = id;
         this.book_id = book_id;
-        this.patron_id = patron_id;
+        this.user_id = patron_id;
         this.status = status;
         this.dueDate = dueDate;
         this.created_at = LocalDate.now();
@@ -29,8 +32,8 @@ public class Transaction {
         this.book_id = book_id;
     }
 
-    public void setPatron_id(int patron_id) {
-        this.patron_id = patron_id;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public void setStatus(String status) {
@@ -57,8 +60,8 @@ public class Transaction {
         return book_id;
     }
 
-    public int getPatron_id() {
-        return patron_id;
+    public int getUser_id() {
+        return user_id;
     }
 
     public String getStatus() {

@@ -69,6 +69,7 @@ public void viewBooks(ActionEvent event){
         catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
 
@@ -76,6 +77,17 @@ public void viewBooks(ActionEvent event){
     public void login(ActionEvent event){
         try{
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
+            content.getChildren().removeAll();
+            content.getChildren().setAll(root);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void viewTransactions(ActionEvent event){
+        try{
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Transactions.fxml")));
             content.getChildren().removeAll();
             content.getChildren().setAll(root);
         }

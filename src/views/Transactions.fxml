@@ -9,16 +9,16 @@
 <Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.views.TransactionsController">
 
     <children>
-        <TableView fx:id="table" layoutX="92.0" layoutY="93.0" prefHeight="267.0" prefWidth="437.0">
+        <TableView fx:id="table" layoutX="48.0" layoutY="93.0" prefHeight="267.0" prefWidth="437.0">
             <columns>
                 <TableColumn fx:id="bookId" prefWidth="75.0" text="book_id" />
                 <TableColumn fx:id="userId" prefWidth="75.0" text="user_id" />
-                <TableColumn fx:id="phoneNumber" prefWidth="75.0" text="status" />
+                <TableColumn fx:id="status" prefWidth="75.0" text="status" />
                 <TableColumn fx:id="issueDate" prefWidth="75.0" text="issue_date" />
             <TableColumn fx:id="dueDate" prefWidth="75.0" text="due_date" />
             </columns>
         </TableView>
-        <Label layoutX="253.0" layoutY="35.0" text="Transactions">
+        <Label layoutX="209.0" layoutY="35.0" text="Transactions">
             <font>
                 <Font name="System Bold" size="16.0" />
             </font>
