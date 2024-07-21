@@ -10,5 +10,7 @@
     <orderEntry type="library" name="postgresql-42.7.3" level="project" />
     <orderEntry type="library" name="javafx-swt" level="project" />
     <orderEntry type="library" name="JavaFX" level="project" />
+    <orderEntry type="library" name="junit-4.13.2-javadoc" level="application" />
+    <orderEntry type="library" name="junit-4.13.2-javadoc" level="project" />
   </component>
 </module>

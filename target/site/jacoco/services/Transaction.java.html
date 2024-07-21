@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Transaction.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lms</a> &gt; <a href="index.source.html" class="el_package">services</a> &gt; <span class="el_source">Transaction.java</span></div><h1>Transaction.java</h1><pre class="source lang-java linenums">package services;
+
+import java.time.LocalDate;
+
+public class Transaction {
+    private int id;
+    private int book_id;
+    private int user_id;
+    private String status;
+    private LocalDate dueDate;
+    private LocalDate created_at;
+    private LocalDate updated_at;
+
+<span class="nc" id="L14">    public Transaction() {</span>
+<span class="nc" id="L15">    }</span>
+
+<span class="fc" id="L17">    public Transaction(int book_id, int patron_id, LocalDate dueDate) {</span>
+<span class="fc" id="L18">        this.book_id = book_id;</span>
+<span class="fc" id="L19">        this.user_id = patron_id;</span>
+<span class="fc" id="L20">        this.status = &quot;borrowed&quot;;</span>
+<span class="fc" id="L21">        this.dueDate = dueDate;</span>
+<span class="fc" id="L22">        this.created_at = LocalDate.now();</span>
+<span class="fc" id="L23">        this.updated_at = LocalDate.now();</span>
+<span class="fc" id="L24">    }</span>
+
+    public void setId(int id) {
+<span class="nc" id="L27">        this.id = id;</span>
+<span class="nc" id="L28">    }</span>
+
+    public void setBook_id(int book_id) {
+<span class="nc" id="L31">        this.book_id = book_id;</span>
+<span class="nc" id="L32">    }</span>
+
+    public void setUser_id(int user_id) {
+<span class="nc" id="L35">        this.user_id = user_id;</span>
+<span class="nc" id="L36">    }</span>
+
+    public void setStatus(String status) {
+<span class="nc" id="L39">        this.status = status;</span>
+<span class="nc" id="L40">    }</span>
+
+    public void setDueDate(LocalDate dueDate) {
+<span class="nc" id="L43">        this.dueDate = dueDate;</span>
+<span class="nc" id="L44">    }</span>
+
+    public void setCreated_at(LocalDate created_at) {
+<span class="nc" id="L47">        this.created_at = created_at;</span>
+<span class="nc" id="L48">    }</span>
+
+    public void setUpdated_at(LocalDate updated_at) {
+<span class="nc" id="L51">        this.updated_at = updated_at;</span>
+<span class="nc" id="L52">    }</span>
+
+    public int getId() {
+<span class="fc" id="L55">        return id;</span>
+    }
+
+    public int getBook_id() {
+<span class="fc" id="L59">        return book_id;</span>
+    }
+
+    public int getUser_id() {
+<span class="fc" id="L63">        return user_id;</span>
+    }
+
+    public String getStatus() {
+<span class="fc" id="L67">        return status;</span>
+    }
+
+    public LocalDate getDueDate() {
+<span class="fc" id="L71">        return dueDate;</span>
+    }
+
+    public LocalDate getCreated_at() {
+<span class="fc" id="L75">        return created_at;</span>
+    }
+
+    public LocalDate getUpdated_at() {
+<span class="nc" id="L79">        return updated_at;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

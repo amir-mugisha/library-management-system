@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DashboardController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lms</a> &gt; <a href="index.source.html" class="el_package">views</a> &gt; <span class="el_source">DashboardController.java</span></div><h1>DashboardController.java</h1><pre class="source lang-java linenums">package views;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.layout.StackPane;
+
+import java.net.URL;
+import java.util.Objects;
+import java.util.ResourceBundle;
+
+<span class="nc" id="L14">public class DashboardController implements Initializable {</span>
+    @FXML
+    public StackPane content;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try{
+<span class="nc" id="L21">            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(&quot;books.fxml&quot;)));</span>
+<span class="nc" id="L22">            content.getChildren().removeAll();</span>
+<span class="nc" id="L23">            content.getChildren().setAll(root);</span>
+        }
+<span class="nc" id="L25">        catch (Exception e) {</span>
+<span class="nc" id="L26">            e.printStackTrace();</span>
+<span class="nc" id="L27">        }</span>
+<span class="nc" id="L28">    }</span>
+
+    public void setContent(Parent content) {
+<span class="nc" id="L31">        this.content.getChildren().setAll(content);</span>
+<span class="nc" id="L32">    }</span>
+
+    public void addBook(ActionEvent event){
+        try{
+<span class="nc" id="L36">            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(&quot;addBook.fxml&quot;)));</span>
+<span class="nc" id="L37">            content.getChildren().removeAll();</span>
+<span class="nc" id="L38">            content.getChildren().setAll(root);</span>
+        }
+<span class="nc" id="L40">        catch (Exception e) {</span>
+<span class="nc" id="L41">            e.printStackTrace();</span>
+<span class="nc" id="L42">        }</span>
+<span class="nc" id="L43">    }</span>
+
+public void viewBooks(ActionEvent event){
+        try{
+<span class="nc" id="L47">            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(&quot;books.fxml&quot;)));</span>
+<span class="nc" id="L48">            content.getChildren().removeAll();</span>
+<span class="nc" id="L49">            content.getChildren().setAll(root);</span>
+        }
+<span class="nc" id="L51">        catch (Exception e) {</span>
+<span class="nc" id="L52">            e.printStackTrace();</span>
+<span class="nc" id="L53">        }</span>
+<span class="nc" id="L54">    }</span>
+
+    public void viewUsers(ActionEvent event){
+        try{
+<span class="nc" id="L58">            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(&quot;users.fxml&quot;)));</span>
+<span class="nc" id="L59">            content.getChildren().removeAll();</span>
+<span class="nc" id="L60">            content.getChildren().setAll(root);</span>
+        }
+<span class="nc" id="L62">        catch (Exception e) {</span>
+<span class="nc" id="L63">            e.printStackTrace();</span>
+<span class="nc" id="L64">        }</span>
+<span class="nc" id="L65">    }</span>
+
+    public void addUser(ActionEvent event){
+        try{
+<span class="nc" id="L69">            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(&quot;addUser.fxml&quot;)));</span>
+<span class="nc" id="L70">            content.getChildren().removeAll();</span>
+<span class="nc" id="L71">            content.getChildren().setAll(root);</span>
+        }
+<span class="nc" id="L73">        catch (Exception e) {</span>
+<span class="nc" id="L74">            e.printStackTrace();</span>
+<span class="nc" id="L75">        }</span>
+
+<span class="nc" id="L77">    }</span>
+
+
+
+    public void login(ActionEvent event){
+        try{
+<span class="nc" id="L83">            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(&quot;login.fxml&quot;)));</span>
+<span class="nc" id="L84">            content.getChildren().removeAll();</span>
+<span class="nc" id="L85">            content.getChildren().setAll(root);</span>
+        }
+<span class="nc" id="L87">        catch (Exception e) {</span>
+<span class="nc" id="L88">            e.printStackTrace();</span>
+<span class="nc" id="L89">        }</span>
+<span class="nc" id="L90">    }</span>
+
+    public void viewTransactions(ActionEvent event){
+        try{
+<span class="nc" id="L94">            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(&quot;Transactions.fxml&quot;)));</span>
+<span class="nc" id="L95">            content.getChildren().removeAll();</span>
+<span class="nc" id="L96">            content.getChildren().setAll(root);</span>
+        }
+<span class="nc" id="L98">        catch (Exception e) {</span>
+<span class="nc" id="L99">            e.printStackTrace();</span>
+<span class="nc" id="L100">        }</span>
+<span class="nc" id="L101">    }</span>
+
+    public void viewAddTransactions(ActionEvent event){
+        try{
+<span class="nc" id="L105">            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(&quot;addTransaction.fxml&quot;)));</span>
+<span class="nc" id="L106">            content.getChildren().removeAll();</span>
+<span class="nc" id="L107">            content.getChildren().setAll(root);</span>
+        }
+<span class="nc" id="L109">        catch (Exception e) {</span>
+<span class="nc" id="L110">            e.printStackTrace();</span>
+<span class="nc" id="L111">        }</span>
+<span class="nc" id="L112">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

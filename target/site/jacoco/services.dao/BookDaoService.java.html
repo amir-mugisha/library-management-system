@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BookDaoService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lms</a> &gt; <a href="index.source.html" class="el_package">services.dao</a> &gt; <span class="el_source">BookDaoService.java</span></div><h1>BookDaoService.java</h1><pre class="source lang-java linenums">package services.dao;
+
+import services.Book;
+import services.utils.DBUtil;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+public class BookDaoService implements BookDao{
+    private  Connection conn;
+
+<span class="fc" id="L15">    public BookDaoService(Connection conn) {</span>
+<span class="fc" id="L16">        this.conn = conn;</span>
+<span class="fc" id="L17">    }</span>
+
+    @Override
+    public void addBook(Book book){
+        try {
+<span class="fc" id="L22">            String sql = &quot;INSERT INTO Book(title,author,publisher,publication_year,available_copies, synopsis,isbn) VALUES (?,?,?,?,?,?,?)&quot;;</span>
+<span class="fc" id="L23">            PreparedStatement ps = conn.prepareStatement(sql);</span>
+<span class="fc" id="L24">            ps.setString(1, book.getTitle());</span>
+<span class="fc" id="L25">            ps.setString(2, book.getAuthor());</span>
+<span class="fc" id="L26">            ps.setString(3,book.getPublisher());</span>
+<span class="fc" id="L27">            ps.setInt(4,book.getPublicationYear());</span>
+<span class="fc" id="L28">            ps.setInt(5,book.getAvailableCopies());</span>
+<span class="fc" id="L29">            ps.setString(6, book.getSynopsis());</span>
+<span class="fc" id="L30">            ps.setDouble(7, book.getISBN());</span>
+<span class="fc" id="L31">            ps.executeUpdate();</span>
+
+<span class="nc" id="L33">        }catch (Exception e){</span>
+<span class="nc" id="L34">            throw new RuntimeException(&quot;Failed to add book &quot; + e.getMessage());</span>
+<span class="fc" id="L35">        }</span>
+<span class="fc" id="L36">    }</span>
+
+    @Override
+    public Book getSingleBook(long isbn){
+<span class="fc" id="L40">        Book book = new Book();</span>
+        try {
+<span class="fc" id="L42">            String sql = &quot;SELECT * FROM Book WHERE ISBN=?&quot;;</span>
+<span class="fc" id="L43">            PreparedStatement ps = conn.prepareStatement(sql);</span>
+<span class="fc" id="L44">            ps.setLong(1,isbn);</span>
+<span class="fc" id="L45">            ResultSet rs = ps.executeQuery();</span>
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">            if(rs.next()){</span>
+<span class="fc" id="L47">                book.setISBN(isbn);</span>
+<span class="fc" id="L48">                book.setTitle(rs.getString(&quot;name&quot;));</span>
+<span class="fc" id="L49">                book.setAuthor(rs.getString(&quot;author&quot;));</span>
+<span class="fc" id="L50">                book.setAvailableCopies(rs.getInt(&quot;available_copies&quot;));</span>
+<span class="fc" id="L51">                book.setPublisher(rs.getString(&quot;publisher&quot;));</span>
+<span class="fc" id="L52">                book.setPublicationYear(rs.getInt(&quot;publication_year&quot;));</span>
+<span class="fc" id="L53">                book.setSynopsis(rs.getString(&quot;synopsis&quot;));</span>
+
+            }
+<span class="nc" id="L56">        }catch (Exception e){</span>
+<span class="nc" id="L57">            throw new RuntimeException(&quot;Failed to fetch book &quot; + e.getMessage());</span>
+<span class="fc" id="L58">        }</span>
+
+<span class="fc" id="L60">        return book;</span>
+    }
+
+    @Override
+    public List&lt;Book&gt; getAllBooks(){
+<span class="fc" id="L65">        List&lt;Book&gt; books = new ArrayList&lt;Book&gt;();</span>
+        try{
+<span class="fc" id="L67">            String sql = &quot;SELECT * FROM Book&quot;;</span>
+<span class="fc" id="L68">            PreparedStatement ps = conn.prepareStatement(sql);</span>
+<span class="fc" id="L69">            ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">            while(rs.next()){</span>
+<span class="fc" id="L71">                Book book = new Book();</span>
+<span class="fc" id="L72">                book.setISBN(rs.getLong(&quot;isbn&quot;));</span>
+<span class="fc" id="L73">                book.setTitle(rs.getString(&quot;title&quot;));</span>
+<span class="fc" id="L74">                book.setAuthor(rs.getString(&quot;author&quot;));</span>
+<span class="fc" id="L75">                book.setAvailableCopies(rs.getInt(&quot;available_copies&quot;));</span>
+<span class="fc" id="L76">                book.setPublisher(rs.getString(&quot;publisher&quot;));</span>
+<span class="fc" id="L77">                book.setPublicationYear(rs.getInt(&quot;publication_year&quot;));</span>
+<span class="fc" id="L78">                book.setSynopsis(rs.getString(&quot;synopsis&quot;));</span>
+<span class="fc" id="L79">                books.add(book);</span>
+<span class="fc" id="L80">            }</span>
+        }
+<span class="nc" id="L82">        catch (Exception e){</span>
+<span class="nc" id="L83">            throw new RuntimeException(&quot;Failed to fetch all books &quot; + e.getMessage());</span>
+<span class="fc" id="L84">        }</span>
+
+<span class="fc" id="L86">        return books;</span>
+    }
+
+    @Override
+    public void updateBook(Book book){
+        try{
+<span class="fc" id="L92">            String sql = &quot;UPDATE Book SET title=?,author=?,publisher=?,publication_year=?,available_copies=?,synopsis=? WHERE ISBN=?&quot;;</span>
+<span class="fc" id="L93">            PreparedStatement ps = conn.prepareStatement(sql);</span>
+<span class="fc" id="L94">            ps.setString(1, book.getTitle());</span>
+<span class="fc" id="L95">            ps.setString(2, book.getTitle());</span>
+<span class="fc" id="L96">            ps.setString(3, book.getPublisher());</span>
+<span class="fc" id="L97">            ps.setInt(4, book.getPublicationYear());</span>
+<span class="fc" id="L98">            ps.setInt(5,book.getAvailableCopies());</span>
+<span class="fc" id="L99">            ps.setString(6,  book.getSynopsis());</span>
+<span class="fc" id="L100">            ps.setLong(7,book.getISBN() );</span>
+<span class="fc" id="L101">            ps.executeUpdate();</span>
+<span class="nc" id="L102">        }catch (Exception e){</span>
+<span class="nc" id="L103">            throw new RuntimeException(&quot;Failed to update book &quot; + e.getMessage());</span>
+<span class="fc" id="L104">        }</span>
+
+<span class="fc" id="L106">    };</span>
+
+    @Override
+    public void deleteBook(long isbn){
+    try {
+<span class="fc" id="L111">        String sql = &quot;DELETE FROM Book WHERE ISBN=?&quot;;</span>
+<span class="fc" id="L112">        PreparedStatement ps = conn.prepareStatement(sql);</span>
+<span class="fc" id="L113">        ps.setLong(1, isbn);</span>
+<span class="fc" id="L114">        ps.executeUpdate();</span>
+<span class="nc" id="L115">    }catch (Exception e){</span>
+<span class="nc" id="L116">        throw new RuntimeException(&quot;Failed to update book &quot; + e.getMessage());</span>
+<span class="fc" id="L117">    }</span>
+<span class="fc" id="L118">    };</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

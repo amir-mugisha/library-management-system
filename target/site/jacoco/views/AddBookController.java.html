@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddBookController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lms</a> &gt; <a href="index.source.html" class="el_package">views</a> &gt; <span class="el_source">AddBookController.java</span></div><h1>AddBookController.java</h1><pre class="source lang-java linenums">package views;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import services.Book;
+import services.dao.BookDaoService;
+import services.utils.DBUtil;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.Objects;
+import java.util.ResourceBundle;
+
+<span class="fc" id="L24">public class AddBookController implements Initializable {</span>
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+    public BookDaoService bookService;
+
+    @FXML
+    public TextField titleTextField;
+
+    @FXML
+    public TextField authorTextField;
+
+    @FXML
+    public TextField publisherTextField;
+
+    @FXML
+    public TextField publicationYearTextField;
+
+    @FXML
+    public TextField copiesTextField;
+
+    @FXML
+    public TextField isbnTextField;
+
+    @FXML
+    public TextField synopsisTextField;
+
+    @FXML
+    public Label warningLabel;
+
+    private DashboardController dashboardController;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+<span class="nc" id="L57">        bookService = new BookDaoService(DBUtil.getConnection());</span>
+<span class="nc" id="L58">        dashboardController = new DashboardController();</span>
+
+<span class="nc" id="L60">    }</span>
+
+
+
+    public void addBook(ActionEvent event) throws Exception {
+        try{
+<span class="nc" id="L66">            String title  = titleTextField.getText();</span>
+<span class="nc" id="L67">            String author = authorTextField.getText();</span>
+<span class="nc" id="L68">            String publisher = publisherTextField.getText();</span>
+<span class="nc" id="L69">            String publicationYear = publicationYearTextField.getText();</span>
+<span class="nc" id="L70">            int copies = Integer.parseInt(copiesTextField.getText());</span>
+<span class="nc" id="L71">            String isbn = isbnTextField.getText();</span>
+<span class="nc" id="L72">            String synopsis = synopsisTextField.getText();</span>
+
+<span class="nc bnc" id="L74" title="All 12 branches missed.">            if(title.isEmpty() || author.isEmpty() || publisher.isEmpty() || publicationYear.isEmpty() || isbn.isEmpty() || synopsis.isEmpty()){</span>
+<span class="nc" id="L75">                warningLabel.setText(&quot;Please fill all fields&quot;);</span>
+<span class="nc" id="L76">                return;</span>
+            }
+
+<span class="nc" id="L79">            Book book = new Book(title, author, publisher, Integer.parseInt(publicationYear), copies, Long.parseLong(isbn),synopsis);</span>
+
+<span class="nc" id="L81">            bookService.addBook(book);</span>
+
+<span class="nc" id="L83">            Parent dashboard = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(&quot;dashboard.fxml&quot;)));</span>
+<span class="nc" id="L84">            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();</span>
+<span class="nc" id="L85">            scene = new Scene(dashboard);</span>
+<span class="nc" id="L86">            stage.setScene(scene);</span>
+<span class="nc" id="L87">            stage.show();</span>
+        }
+<span class="nc" id="L89">        catch (Exception e) {</span>
+<span class="nc" id="L90">            e.printStackTrace();</span>
+<span class="nc" id="L91">            warningLabel.setText(&quot;An error occurred&quot;);</span>
+<span class="nc" id="L92">        }</span>
+
+<span class="nc" id="L94">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
